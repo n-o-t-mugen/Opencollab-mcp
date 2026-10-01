@@ -11,6 +11,8 @@
 
 6 focused tools. Works with Claude Desktop, Cursor, VS Code, or any MCP-compatible client.
 
+[Changelog](CHANGELOG.md)
+
 </div>
 
 ---
@@ -152,7 +154,7 @@ The AI picks which tools to call based on what you ask.
 | Tool | What it does |
 |---|---|
 | `opencollab_match_me` | Reads your GitHub profile, detects your top language, returns 10 matching good-first-issues — all in one call. |
-| `opencollab_find_issues` | Up to 15 recent issues for a given language, with beginner (`good first issue`) and intermediate (`help wanted`) difficulty filters. |
+| `opencollab_find_issues` | Up to 15 recent issues (adjustable with `limit`, 1–30) for a given language, with beginner (`good first issue`) and intermediate (`help wanted`) difficulty filters. |
 
 </details>
 
@@ -246,6 +248,13 @@ tests/                 # pytest suite
 ### Contributing
 
 Issues and PRs are welcome. The codebase is small (~1000 lines) and intentionally easy to read. Every scoring threshold lives in `constants.py` so tuning is a one-line change. New tools follow the same pattern: a function in `tools/<category>.py`, a Pydantic input model in `models.py`, and a test in `tests/test_tools.py`.
+
+When reporting bugs or submitting issues, please include the version of `opencollab-mcp` you are running (especially when using `uvx` caches):
+
+```bash
+opencollab-mcp --version
+```
+*(or `opencollab-mcp -V`)*
 
 The `main` branch is protected — please open a PR rather than pushing directly. CI runs on Python 3.10, 3.11, and 3.12.
 
